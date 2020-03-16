@@ -99,6 +99,20 @@ export default function Home (){
      
      
    />
+
+    <Tab.Screen
+     name="Sign in"
+     component={SigninScreen}
+     
+     
+   />
+
+<Tab.Screen
+     name="Sign up"
+     component={SignupScreen}
+     
+     
+   />
   
  
 
