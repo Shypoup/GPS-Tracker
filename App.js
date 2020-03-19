@@ -7,6 +7,8 @@ import AccountScreen from './src/screens/AccountScreen';
 import SigninScreen from './src/screens/SigninScreen';
 import SignupScreen from './src/screens/SignupScreen';
 
+import {Provider as AuthProvider} from './src/context/AuthContext'
+
 
 
 import * as React from 'react';
@@ -23,15 +25,19 @@ const Stack=createStackNavigator();
 
 
 
-// function Create(){
-//  return (
-//    <Stack.Navigator>
-//      <Stack.Screen name="Select" component={SelectPost} options={{ headerShown: false }}/>
-//      <Stack.Screen name="CreateLost" component={CreatePost} />
-//      <Stack.Screen name="Car accident" component={CreateAcciedentPost}  /> 
-//    </Stack.Navigator>
-//  );
-// }
+export default function Create(){
+ return (
+  <AuthProvider>
+   <NavigationContainer>
+   <Stack.Navigator>
+     <Stack.Screen name="signup" component={SignupScreen} options={{ headerShown: false }}/>
+     <Stack.Screen name="signin" component={SigninScreen} options={{ headerShown: false }}/>
+     <Stack.Screen name="Home" component={Home}  options={{ headerShown: false }}/> 
+   </Stack.Navigator>
+   </NavigationContainer>
+   </AuthProvider>
+ );
+}
 
 
 
@@ -41,9 +47,10 @@ const Stack=createStackNavigator();
 /************BUTTOMTAPNAVIGATOR */
 
 
-export default function Home (){
+ function Home (){
  return(
-   <NavigationContainer>
+   <AuthProvider>
+   {/* <NavigationContainer> */}
    <Tab.Navigator tabstyle={{}}
    initialRouteName="Tracks"
    tabBarOptions={{
@@ -118,7 +125,7 @@ export default function Home (){
 
   
  </Tab.Navigator>
- </NavigationContainer>
-
+ {/* </NavigationContainer> */}
+ </AuthProvider>
  )
 }
